@@ -6,21 +6,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static HTML/CSS website for Ailbhe McNeela Advisory, Ailbhe's DTC and e-commerce strategy consultancy. It's a port of the original Squarespace site at `amnadvisory.ie`, hosted on GitHub Pages. No build step, no framework, no bundler: files are served as-is.
 
-## Current status: not yet live on the domain
+## Current status: domain cut over, Squarespace still active
 
-As of 2026-09-29 the site is being moved off Squarespace:
+On 2026-09-29 `amnadvisory.ie` was moved from Squarespace to GitHub Pages:
 
-1. **GitHub Pages** needs enabling (Settings → Pages → Deploy from a branch → `main`, `/ (root)`). Once it's on, the site is served at `https://ailbhemcneela.github.io/amn-advisory-site/`, while `amnadvisory.ie` still serves the old Squarespace site.
-2. **Domain cutover** happens once the github.io version is approved:
-    - DNS for `amnadvisory.ie` is at **Blacknight**.
-    - Email runs through **Google Workspace**, so never change or remove the MX records.
-    - Point `www` (CNAME) at `ailbhemcneela.github.io` and the apex (A records) at GitHub Pages' IPs.
-    - Add a `CNAME` file containing `www.amnadvisory.ie`, then enable "Enforce HTTPS".
-3. Cancel Squarespace only after the domain is confirmed working on GitHub Pages.
+- DNS is at **Blacknight** (DNS Manager in the Blacknight client area). The apex A records point at GitHub Pages (`185.199.108-111.153`), and `www` is a CNAME to `ailbhemcneela.github.io`. The `CNAME` file in the repo holds `www.amnadvisory.ie`.
+- Email runs through **Google Workspace**, so never change or remove the MX record (`1 SMTP.GOOGLE.COM`).
 
-**Don't add the `CNAME` file before the DNS change.** Doing so redirects the github.io preview to the domain, which still points at Squarespace.
+Still to do:
 
-Until the cutover, "the live site" in conversation with Ailbhe means the github.io address, not amnadvisory.ie. Update this section once the cutover is done.
+1. Enable "Enforce HTTPS" (Settings → Pages) once GitHub has issued the certificate.
+2. Cancel Squarespace once the domain is confirmed working, then delete the leftover `verify.squarespace.com` CNAME in Blacknight.
+
+"The live site" now means `www.amnadvisory.ie`. Update this section once the steps above are done.
 
 ## Pages
 
