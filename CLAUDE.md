@@ -14,8 +14,6 @@ The live site is `https://www.amnadvisory.ie`, served by GitHub Pages from `main
 - Email runs through **Google Workspace**, so never change or remove the MX record (`1 SMTP.GOOGLE.COM`).
 - After any DNS change, check that all four Blacknight nameservers agree: `for n in 1 2 3 4; do dig +short SOA amnadvisory.ie @ns$n.blacknightdns.com; done`. During the cutover, ns3/ns4 were stuck on a February 2025 copy of the zone and still pointed at Squarespace, which made GitHub's DNS check fail. Blacknight support fixed it by refreshing the zone (ticket #1339232).
 
-Still to do: delete the leftover `verify.squarespace.com` CNAME (`cgp8652g772z6l8ffsfk`) in Blacknight.
-
 ## Pages
 
 - `index.html`: the whole site (single page). Sections are hero, "what I've learned", services, about, testimonials, and contact (`#contact`).
