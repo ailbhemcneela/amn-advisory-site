@@ -6,19 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static HTML/CSS website for Ailbhe McNeela Advisory, Ailbhe's DTC and e-commerce strategy consultancy. It's a port of the original Squarespace site at `amnadvisory.ie`, hosted on GitHub Pages. No build step, no framework, no bundler: files are served as-is.
 
-## Current status: domain cut over, Squarespace still active
+## Hosting and domain
 
-On 2026-09-29 `amnadvisory.ie` was moved from Squarespace to GitHub Pages:
+The live site is `https://www.amnadvisory.ie`, served by GitHub Pages from `main`. The domain moved from Squarespace on 2026-09-29, HTTPS is enforced, and Squarespace has been cancelled.
 
-- DNS is at **Blacknight** (DNS Manager in the Blacknight client area). The apex A records point at GitHub Pages (`185.199.108-111.153`), and `www` is a CNAME to `ailbhemcneela.github.io`. The `CNAME` file in the repo holds `www.amnadvisory.ie`.
+- DNS is at **Blacknight** (DNS Manager in the Blacknight client area). The apex A records point at GitHub Pages (`185.199.108-111.153`), and `www` is a CNAME to `ailbhemcneela.github.io`. The `CNAME` file in the repo holds `www.amnadvisory.ie`; the bare domain redirects to it.
 - Email runs through **Google Workspace**, so never change or remove the MX record (`1 SMTP.GOOGLE.COM`).
+- After any DNS change, check that all four Blacknight nameservers agree: `for n in 1 2 3 4; do dig +short SOA amnadvisory.ie @ns$n.blacknightdns.com; done`. During the cutover, ns3/ns4 were stuck on a February 2025 copy of the zone and still pointed at Squarespace, which made GitHub's DNS check fail. Blacknight support fixed it by refreshing the zone (ticket #1339232).
 
-Still to do:
-
-1. Enable "Enforce HTTPS" (Settings → Pages) once GitHub has issued the certificate.
-2. Cancel Squarespace once the domain is confirmed working, then delete the leftover `verify.squarespace.com` CNAME in Blacknight.
-
-"The live site" now means `www.amnadvisory.ie`. Update this section once the steps above are done.
+Still to do: delete the leftover `verify.squarespace.com` CNAME (`cgp8652g772z6l8ffsfk`) in Blacknight.
 
 ## Pages
 
